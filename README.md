@@ -77,9 +77,10 @@ Once you open the app, you will see buttons that take you to the different parts
 
 ## How to Start
 
-1. Install JDK 22 or newer. A JRE alone is not enough because the included JavaFX files require Java 22.
-2. Download or clone this repository and extract it if necessary.
-3. Double-click the batch file: `run-daily-fuel.bat`.
+1. Install JDK 22 or newer.
+2. 
+3. Download the source code and extract it if necessary.
+4. Double-click the batch file: `run-daily-fuel.bat`.
 
 The script compiles every `.java` file into the `out` folder, copies the stylesheet,
 and starts the JavaFX application. The included `lib` and `bin` folders contain the

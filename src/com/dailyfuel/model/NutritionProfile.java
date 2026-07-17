@@ -14,6 +14,12 @@ public class NutritionProfile {
         goals = new ArrayList<>();
     }
 
+    public NutritionProfile(List<Meal> meals, List<NutritionGoal> goals) {
+        this.meals = meals == null ? new ArrayList<>() : new ArrayList<>(meals);
+        this.goals = goals == null ? new ArrayList<>() : new ArrayList<>(goals);
+        rebuildGoalProgress();
+    }
+
     public void addGoal(NutritionGoal goal) {
         this.goals.add(goal);
     }
@@ -47,6 +53,14 @@ public class NutritionProfile {
 
     public List<Meal> getMeals() {
         return meals;
+    }
+
+    public boolean removeMeal(Meal meal) {
+        if (!meals.remove(meal)) {
+            return false;
+        }
+        rebuildGoalProgress();
+        return true;
     }
 
     public double getCaloriesConsumed() {
@@ -105,5 +119,30 @@ public class NutritionProfile {
 	public List<NutritionGoal> getGoals() {
 		return this.goals;
 	}
+
+    public NutritionGoal getNutritionGoal() {
+        return goals.isEmpty() ? null : goals.get(0);
+    }
+
+    public void setNutritionGoal(NutritionGoal goal) {
+        goals.clear();
+        if (goal != null) {
+            goals.add(goal);
+        }
+        rebuildGoalProgress();
+    }
+
+    public boolean removeGoal(NutritionGoal goal) {
+        return goals.remove(goal);
+    }
+
+    private void rebuildGoalProgress() {
+        for (NutritionGoal goal : goals) {
+            goal.clearMeals();
+            for (Meal meal : meals) {
+                goal.addMeal(meal);
+            }
+        }
+    }
 	
 }

@@ -16,10 +16,10 @@ public class GoalComparison {
 
     public static boolean carbGoalExceeded(double carbsConsumed, NutritionGoal goal) {
 
-        return carbsConsumed > goal.getCarbsGoal();
+        return carbsConsumed > goal.getCarbGoal();
     }
 
-    public static double calorieProgressPercentage(double caloriesConsume, NutritionGoal goal) {
+    public static double calorieProgressPercentage(double caloriesConsumed, NutritionGoal goal) {
 
         if (goal.getCalorieGoal() <= 0) {
             return 0;

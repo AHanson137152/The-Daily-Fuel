@@ -7,7 +7,7 @@ package com.dailyfuel.logic;
 
 	public class RecurringMealSync {
 		
-		//Add recurring transaction from Recurring list
+		//Add recurring meal from Recurring list
 	    public static void syncRecurringMeals(NutritionProfile profile, List<RecurringMeal> recurringMeals) {
 	      
 	    	LocalDate today = LocalDate.now();
@@ -24,7 +24,7 @@ package com.dailyfuel.logic;
 	    }
 	    }
 	    
-	    //Check duplicate transactions
+	    //Check meal transactions
 	    private static boolean CheckDuplicate(NutritionProfile profile, Meal meal) {
 	    	
 	    	for (Meal existingMeal : profile.getMeals()) {
@@ -34,8 +34,8 @@ package com.dailyfuel.logic;
 	                            .equals(meal.getDate());
 
 	            boolean sameName =
-	                    existingMeal.getName()
-	                            .equals(meal.getName());
+                    existingMeal.getMealName()
+                            .equals(meal.getMealName());
 
 	            boolean sameCalories =
 	                    Double.compare(
@@ -54,6 +54,10 @@ package com.dailyfuel.logic;
 	                return true;
 	            }
 	        }
+
+	        return false;
+	    }
+	}
 
 	        return false;
 	    }

@@ -77,12 +77,15 @@ Once you open the app, you will see buttons that take you to the different parts
 
 ## How to Start
 
-1. Navigate to the `releases/latest` page and download the ZIP file.
-2. Extract the ZIP file to a location of your choice.
-3. Run the application file located inside the extracted folder.
-4. Start using Daily Fuel by selecting options from the main dashboard.
+1. Install JDK 22 or newer. A JRE alone is not enough because the included JavaFX files require Java 22.
+2. Download or clone this repository and extract it if necessary.
+3. Double-click the batch file: `run-daily-fuel.bat`.
 
-> **Note:** The release link and final application file will be added when the project is ready for distribution.
+The script compiles every `.java` file into the `out` folder, copies the stylesheet,
+and starts the JavaFX application. The included `lib` and `bin` folders contain the
+JavaFX JAR files and Windows native libraries used by the launcher.
+
+To compile without opening the application, double-click `compile-daily-fuel.bat`.
 
 ---
 

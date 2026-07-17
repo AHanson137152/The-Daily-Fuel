@@ -5,6 +5,7 @@ import com.dailyfuel.model.Meal;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
@@ -102,8 +103,8 @@ public class MealSearch {
 
         return meals.stream()
                 .filter(meal ->
-                        meal.getCarbohydrates() >= minCarbohydrates
-                        && meal.getCarbohydrates() <= maxCarbohydrates)
+                        meal.getCarbs() >= minCarbs
+                        && meal.getCarbs() <= maxCarbs)
                 .collect(Collectors.toList());
     }
 
@@ -126,4 +127,3 @@ public class MealSearch {
         return new ArrayList<>(meals);
     }
 }
-

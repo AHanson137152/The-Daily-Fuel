@@ -1,0 +1,13 @@
+# Generated Java class files
+out/**/*.class
+sources.txt
+
+# User-created application data
+meals.txt
+goals.txt
+recurring-meals.txt
+
+# IDE metadata
+.idea/
+.vscode/
+*.iml

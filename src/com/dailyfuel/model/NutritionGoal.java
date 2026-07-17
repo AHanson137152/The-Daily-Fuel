@@ -15,7 +15,7 @@ public class NutritionGoal {
     private LocalDate startDate; 
     private LocalDate endDate;   
 
-    public Goals(String name, double calorieGoal, double proteinGoal, double carbGoal, double fatGoal, Category category, LocalDate startDate, LocalDate endDate) {
+    public NutritionGoal(String name, double calorieGoal, double proteinGoal, double carbGoal, double fatGoal, Category category, LocalDate startDate, LocalDate endDate) {
         this.name = name;
         this.calorieGoal = calorieGoal;
         this.proteinGoal = proteinGoal;
@@ -93,6 +93,10 @@ public class NutritionGoal {
     public void removeMeal(Meal m) {
         this.meals.remove(m);
     }
+
+    public void clearMeals() {
+        this.meals.clear();
+    }
 	
 	public double getCalorieGoal() {
 		return this.calorieGoal;
@@ -121,17 +125,16 @@ public class NutritionGoal {
     
 	@Override
     public String toString() {
-		public String toString() {
 		    StringBuilder sb = new StringBuilder();
 		    sb.append(name).append(" [").append(category).append("]\n");
 		    sb.append("Calories: ")
 		      .append(String.format("%.1f", getTotalCalories()))
 		      .append(" / ")
 		      .append(String.format("%.1f", calorieGoal));
-		    if (isOverGoal()) {
+		    if (isCalorieGoalMet()) {
 		        sb.append(" (Reached)");
 		    }
-		    else if (isCloseLimit()) {
+		    else if (isCalorieGoalClose()) {
 		        sb.append(" (>80% Reached)");
 		    }
 		    sb.append("\n");
@@ -140,10 +143,10 @@ public class NutritionGoal {
 		      .append("g / ")
 		      .append(String.format("%.1f", proteinGoal))
 		      .append("g");
-		    if (isProteinOverGoal()) {
+		    if (isProteinGoalMet()) {
 		        sb.append(" (Reached)");
 		    }
-		    else if (isProteinCloseLimit()) {
+		    else if (isProteinGoalClose()) {
 		        sb.append(" (>80% Reached)");
 		    }
 		    sb.append("\n");
@@ -152,10 +155,10 @@ public class NutritionGoal {
 		      .append("g / ")
 		      .append(String.format("%.1f", carbGoal))
 		      .append("g");
-		    if (isCarbOverGoal()) {
+		    if (isCarbGoalMet()) {
 		        sb.append(" (Reached)");
 		    }
-		    else if (isCarbCloseLimit()) {
+		    else if (isCarbGoalClose()) {
 		        sb.append(" (>80% Reached)");
 		    }
 		    sb.append("\n");
@@ -164,12 +167,12 @@ public class NutritionGoal {
 		      .append("g / ")
 		      .append(String.format("%.1f", fatGoal))
 		      .append("g");
-		    if (isFatOverGoal()) {
+		    if (isFatGoalMet()) {
 		        sb.append(" (Reached)");
 		    }
-		    else if (isFatCloseLimit()) {
+		    else if (isFatGoalClose()) {
 		        sb.append(" (>80% Reached)");
 		    }
-		    return sb.toString();
+			    return sb.toString();
 		}
 }

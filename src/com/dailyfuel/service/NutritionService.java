@@ -78,7 +78,6 @@ public class NutritionService {
 
     public void updateNutritionGoal(NutritionGoal goal) {
         profile.setNutritionGoal(goal);
-        DataManager.saveNutritionGoal(goal);
+        DataManager.saveGoals(profile.getGoals());
     }
 }
-

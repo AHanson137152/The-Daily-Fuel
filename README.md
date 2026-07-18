@@ -6,8 +6,8 @@ Daily Fuel is a nutrition tracking application made with Java. It is designed to
 
 ## Product Vision
 
-**FOR** anyone seeking to improve their eating habits, fitness enthusiasts, and individuals who are conscious about their health  
-**WHO** needs an easy way to monitor their daily food intake and nutritional information  
+**FOR** Anyone seeking to improve their eating habits, fitness enthusiasts, and individuals who are conscious about their health  
+**WHO** Needs an easy way to monitor their daily food intake and nutritional information  
 **THE** Daily Fuel is a nutrition tracking application  
 **THAT:**
 
@@ -78,7 +78,7 @@ Once you open the app, you will see buttons that take you to the different parts
 ## How to Start
 
 1. Install JDK 22 or newer.
-2. 
+2. Follow the tag to the release page, or alternatively, [follow this link to be brought the release page.](https://github.com/AHanson137152/The-Daily-Fuel/releases/tag/v1.0)
 3. Download the source code and extract it if necessary.
 4. Double-click the batch file: `run-daily-fuel.bat`.
 
@@ -92,6 +92,5 @@ To compile without opening the application, double-click `compile-daily-fuel.bat
 
 ## Credits
 
-Made by:
-
+Made by Group #3:
 Stephen Akwiwu, Alexander Hanson, and Richie Slodysko

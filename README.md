@@ -78,7 +78,7 @@ Once you open the app, you will see buttons that take you to the different parts
 ## How to Start
 
 1. Install JDK 22 or newer.
-2. Follow the tag to the release page, or alternatively, [follow this link to be brought the release page.](https://github.com/AHanson137152/The-Daily-Fuel/releases/tag/v1.0)
+2. Follow the tag to the release page, or alternatively, [follow this link to be brought the release page.](https://github.com/AHanson137152/The-Daily-Fuel/releases)
 3. Download the source code and extract it if necessary.
 4. Double-click the batch file: `run-daily-fuel.bat`.
 

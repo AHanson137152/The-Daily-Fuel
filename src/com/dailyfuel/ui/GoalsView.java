@@ -4,7 +4,6 @@ import com.dailyfuel.data.DataManager;
 import com.dailyfuel.model.Category;
 import com.dailyfuel.model.NutritionGoal;
 import com.dailyfuel.model.NutritionProfile;
-import javafx.collections.FXCollections;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
@@ -16,17 +15,23 @@ import java.time.LocalDate;
 import java.util.function.Consumer;
 
 public final class GoalsView {
+    private static final String ALL_MEAL_TYPES = "All meal types";
+
     private GoalsView() { }
 
     public static VBox create(NutritionProfile profile, Consumer<String> navigate, Runnable refresh) {
-        VBox root = UiComponents.page("Nutrition Goals", "Set calorie and macro targets for a meal category and date range.", "goals", navigate);
+        VBox root = UiComponents.page("Nutrition Goals", "Set calorie and macro targets for all meal types or one category within a date range.", "goals", navigate);
         TextField name = field("Goal name");
         TextField calorie = field("Calories");
         TextField protein = field("Protein (g)");
         TextField carbs = field("Carbs (g)");
         TextField fat = field("Fat (g)");
-        ComboBox<Category> category = new ComboBox<>(FXCollections.observableArrayList(Category.values()));
-        category.setPromptText("Category");
+        ComboBox<String> category = new ComboBox<>();
+        category.getItems().add(ALL_MEAL_TYPES);
+        for (Category value : Category.values()) {
+            category.getItems().add(value.name());
+        }
+        category.setValue(ALL_MEAL_TYPES);
         DatePicker start = new DatePicker(LocalDate.now().withDayOfMonth(1));
         DatePicker end = new DatePicker(LocalDate.now().withDayOfMonth(LocalDate.now().lengthOfMonth()));
 
@@ -43,11 +48,14 @@ public final class GoalsView {
         create.getStyleClass().add("primary-button");
         create.setOnAction(event -> {
             try {
-                if (name.getText().isBlank() || category.getValue() == null || start.getValue() == null || end.getValue() == null)
-                    throw new IllegalArgumentException("Complete the name, category, and dates.");
+                if (name.getText().isBlank() || start.getValue() == null || end.getValue() == null)
+                    throw new IllegalArgumentException("Complete the name and dates.");
                 if (start.getValue().isAfter(end.getValue())) throw new IllegalArgumentException("Start date must be before end date.");
+                Category selectedCategory = ALL_MEAL_TYPES.equals(category.getValue())
+                        ? null
+                        : Category.valueOf(category.getValue());
                 NutritionGoal goal = new NutritionGoal(name.getText().trim(), number(calorie), number(protein),
-                        number(carbs), number(fat), category.getValue(), start.getValue(), end.getValue());
+                        number(carbs), number(fat), selectedCategory, start.getValue(), end.getValue());
                 profile.addGoal(goal);
                 for (com.dailyfuel.model.Meal meal : profile.getMeals()) goal.addMeal(meal);
                 DataManager.saveGoals(profile.getGoals());

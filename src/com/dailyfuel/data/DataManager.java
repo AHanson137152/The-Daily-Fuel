@@ -311,3 +311,4 @@ public class DataManager {
         }
         return rules;
     }
+}
